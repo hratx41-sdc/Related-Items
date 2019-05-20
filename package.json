@@ -6,7 +6,7 @@
   "scripts": {
     "build:dev": "webpack -d --watch",
     "start": "node server/index.js",
-    "start:dev": "nodemon server/index.js -w server -w database-mysql"
+    "start:dev": "nodemon server/index.js -w server -w database-mongodb"
   },
   "author": "Fasho'va Team: William Yang",
   "license": "ISC",
@@ -25,9 +25,11 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "jquery": "^3.4.1",
-    "mysql": "^2.14.1",
+    "mongoose": "^5.5.9",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "react-slick": "^0.24.0",
+    "slick-carousel": "^1.8.1",
     "underscore": "^1.8.3",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"

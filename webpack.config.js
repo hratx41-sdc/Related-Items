@@ -6,13 +6,14 @@ module.exports = {
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',
-    path: DIST_DIR
+    path: DIST_DIR,
   },
   module: {
     rules: [
       {
         test: /\.jsx?/,
-        loader: 'babel-loader'
+        include: SRC_DIR, 
+        loader: 'babel-loader',
         // Take a look at your `.babelrc` file (located in same the directory
         // as your `package.json` file) to see how your Babel presets are
         // configured.
@@ -20,5 +21,3 @@ module.exports = {
     ]
   }
 };
-//create default .babelrc file
-//

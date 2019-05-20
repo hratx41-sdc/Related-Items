@@ -1,0 +1,19 @@
+body {
+    font-family: 'Oswald', sans-serif;
+    background-color: red;
+    text-align: center;
+}
+.slider {
+    text-align: center;
+    display: inline-block;
+    width: 80%;
+}
+
+.item-box {
+    width: 300px;
+    text-align: center;
+    margin: 20px;
+}
+
+
+

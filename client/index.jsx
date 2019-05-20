@@ -1,23 +1,54 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
+import Slider from './components/slider.jsx';
+import Item from './components/item.jsx';
 
-class RelatedObjects extends React.Component {
+
+class RelatedItems extends React.Component {
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+            items: [],
+        };
     }
-
+    
+    
+    componentDidMount() {
+        let url = `/items/category/shirts`;
+        axios.get(url)
+            .then((items) => this.setState({items: items.data}))
+            .catch(console.log)
+    }
+    
     render(){
-
-        return (
-            <div id="related-objects-app">
-                <h1>related-objects: Will's component</h1>
-            </div>
-        )
+        if(this.state.items.length > 0){
+            const itemsArray = this.state.items.map((item) => {
+                return <Item name={item.name} images={item.images} price={item.price} key={item.uuid}/>
+            });
+            const slider = <Slider items={itemsArray} />
+            return (
+                <>
+                <div id='related-items-app'>
+                    {slider}
+                </div>
+                </>
+            )
+        } else {
+            return (
+                <>
+                <div id='related-items-app'>
+                </div>
+                </>
+            )
+        }
     }
 };
 
+
+
+
 ReactDOM.render(
-    <RelatedObjects />,
+    <RelatedItems />,
     document.getElementById('related-items')
 )
