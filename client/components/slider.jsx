@@ -9,7 +9,7 @@ export default class MultipleItems extends React.Component {
 
   render() {
     const settings = {
-      dots: true,
+      dots: false,
       arrows: true,
       infinite: true,
       speed: 400,
