@@ -12,14 +12,14 @@ export default class MultipleItems extends React.Component {
       dots: false,
       arrows: true,
       infinite: true,
-      speed: 400,
+      speed: 200,
       slidesToShow: 4,
       slidesToScroll: 1,
     };
     return (
-      <div>
-        <h2> Multiple items </h2>
-        <Slider {...settings} className="slider">
+      <div className="slider">
+        <h2>{this.props.title.toUpperCase()}</h2>
+        <Slider {...settings}>
           {this.props.items}
         </Slider>
       </div>

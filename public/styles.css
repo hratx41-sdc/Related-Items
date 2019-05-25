@@ -8,30 +8,63 @@ body {
     text-align: center;
     display: inline-block;
     width: 80%;
+    height: 500px;
+    letter-spacing: 1px;
+    font-family: "Open Sans", sans-serif;
 }
-
+.slider h2 {
+    font-size: 20px;
+    font-weight: 400;
+}
 .item-box {
-    width: 300px;
+    width: 265.5px;
+    height: 800px !important;
     display: inline-block;
     text-align: center;
-    margin: 20px;
+    padding: 10px 2px;
+    font-size: 18px;
+    text-transform: uppercase;
 }
-
 .item-box, img {
     text-align: center;
+    width: 225px;
+    margin: 0, 5px;
 }
-.slick-prev .slick-next {
-    left: -50px !important;
+.item-box .item-info {
+    text-align: center;
+    height: 100px;
+    width: auto;
+    margin: 10px auto 0 auto;
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 19.5px;
+
+}
+.item-box .item-info .item-details {
+    height: 42px;
+}
+.item-box .item-info .item-price {
+    height: 19px;
+    margin: 6px 0 0 0;
+}
+.item-box .add-to-bag {
+    background: url('/AddToBag.png');
 }
 
+
+/* Slider Buttons and Stuff */
+.slick-arrow {
+    z-index: 0;
+    top: 170px;
+}
 .slick-prev::before {
-    transform: rotate(180deg);
-    content: url('/Arrow.png');
-    margin: 0, 100px, 0, 0, !important;
+    content: url('/ArrowLeft.png');
 }
-
 .slick-next::before {
-    content: url('/Arrow.png');
+    content: url('/ArrowRight.png');
+}
+.slick-slide {
+    height: 500px;
 }
 
 /* }
