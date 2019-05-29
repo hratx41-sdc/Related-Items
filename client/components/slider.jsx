@@ -13,7 +13,7 @@ export default class MultipleItems extends React.Component {
       arrows: true,
       infinite: true,
       speed: 200,
-      slidesToShow: 4,
+      slidesToShow: 5,
       slidesToScroll: 1,
     };
     return (

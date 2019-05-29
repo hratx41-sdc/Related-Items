@@ -1,13 +1,9 @@
 FROM node:8-alpine
 
-RUN mkdir -p /usr/src/app
-
 WORKDIR /usr/src/app
-
-COPY . .
-
+COPY package.json ./
 RUN npm install
-
+COPY . .
 EXPOSE 3005
 
-CMD ["node", "server/index.js"]
+CMD ["npm", "start"]

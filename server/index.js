@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParcer = require('body-parser');
 const PORT = 3005;
-const { getItemByUuid, getItemsByCategory } = require('../db/index.js');
+const { getItemByUuid, getItemsByCategory, getRandomItems } = require('../db/index.js');
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.use(express.static('public'));
 app.listen(PORT, console.log(`Listening on port... ${PORT}`));
 
 app.get('/items/id/:uuid', (req, res) => {
-    console.log('GET request at /items for uuid: ' + req.params.uuid);
+    console.log('GET request at /items/uuid: ' + req.params.uuid);
     getItemByUuid(req.params.uuid, (err, item) => {
         if (err) {
             console.log(err);
@@ -32,6 +32,20 @@ app.get('/items/category/:category', (req, res) => {
             res.status(401).send(err);
         } else {
             console.log(`Success! Found ${items.length} results for ${req.params.category}.`);
+            res.status(201).send(items);
+        }
+    });
+});
+
+app.get('/items/random', (req, res) => {
+    console.log('GET request for 20 random items.');
+    getRandomItems((err, items) => {
+        if (err) {
+            console.log('Error getting random items:');
+            console.log(err);
+            res.status(401).send(err);
+        } else {
+            console.log('Success! Got 20 random items.');
             res.status(201).send(items);
         }
     });

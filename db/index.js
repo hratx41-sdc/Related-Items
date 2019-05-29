@@ -4,8 +4,7 @@ const { itemsArray } = require('../items');
 const uri = require('./asdf.js');
 
 
-mongoose.connect('mongodb://localhost/relatedItems', { useNewUrlParser: true });
-//open terminal and run mongodb: mongodb
+mongoose.connect(uri, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => console.log(`We're connected to MongoDB!`));
@@ -44,11 +43,28 @@ const getItemsByCategory = function(category, cb) {
     });
 };
 
+const getRandomItems = function(cb) {
+    Item.find({}, (err, items) => {
+        if (err){
+            cb(err, null);
+        } else {
+            const randomItems = [];
+            for(let i = 0; i < 21; i ++){
+                let x = Math.floor(Math.random() * (100 - i));
+                randomItems.push(items.splice(x, 1)[0]);
+            }
+            cb(null, randomItems);
+        }
+
+    });
+}
 
 
 
 
 //THESE ARE FOR DE-SEEDING AND RE-SEEDING DB AS NEEDED DO NOT DELETE
+
+// Item.deleteMany({}, (err) => console.log);
 
 // Item.create(itemsArray, (err, itemInstances) => {
 //     if (err) {
@@ -59,9 +75,9 @@ const getItemsByCategory = function(category, cb) {
 //     }
 // }); 
 
-// Item.deleteMany({}, (err) => console.log);
 
 module.exports = {
     getItemByUuid,
-    getItemsByCategory
+    getItemsByCategory,
+    getRandomItems
 }

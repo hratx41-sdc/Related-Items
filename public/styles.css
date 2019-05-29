@@ -1,27 +1,30 @@
 /* @charset 'UTF-8'; */
 
-body {
+#related-items {
     font-family: 'Oswald', sans-serif;
     text-align: center;
 }
 .slider {
     text-align: center;
     display: inline-block;
-    width: 80%;
+    width: 90%;
     height: 500px;
     letter-spacing: 1px;
     font-family: "Open Sans", sans-serif;
 }
+
 .slider h2 {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 400;
+    margin: 13px 0;
 }
 .item-box {
     width: 265.5px;
-    height: 800px !important;
+    height: 500px;
+    margin: 25px 0;
+    padding: 10px 2px;
     display: inline-block;
     text-align: center;
-    padding: 10px 2px;
     font-size: 18px;
     text-transform: uppercase;
 }
@@ -29,6 +32,9 @@ body {
     text-align: center;
     width: 225px;
     margin: 0, 5px;
+}
+img:hover {
+    cursor: pointer;
 }
 .item-box .item-info {
     text-align: center;
@@ -38,17 +44,57 @@ body {
     font-size: 14px;
     font-weight: 100;
     line-height: 19.5px;
+    
 
 }
 .item-box .item-info .item-details {
-    height: 42px;
+    height: 38px;
+    overflow: hidden;
 }
 .item-box .item-info .item-price {
     height: 19px;
     margin: 6px 0 0 0;
 }
-.item-box .add-to-bag {
-    background: url('/AddToBag.png');
+.item-box .item-info .add-to-bag {
+    height: 30px;
+    width: 188px;
+    background-color: black;
+    background-attachment: scroll;
+    color: white;
+    text-align: center;
+    margin: 0 18.5px;
+}
+.item-box .item-info .add-to-bag .text{
+    display: inline-block;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    margin: 6px 0 0 0;
+    height: 19px;
+}
+.item-box .item-info .add-to-bag select {
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+    top: -25px;
+    align-items: center;
+    background-attachment: scroll;
+    cursor: pointer;
+    height: 30px;
+    max-width: 100%;
+    min-width: 1px;
+    opacity: 0;
+    outline-offset: -2px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    position: relative;
+    vertical-align: middle;
+    white-space: pre;
+    width: 188px;
+    z-index: 99;
+    -webkit-font-smoothing: antialiased;
 }
 
 
@@ -64,8 +110,18 @@ body {
     content: url('/ArrowRight.png');
 }
 .slick-slide {
-    height: 500px;
+    height: 560px;
 }
+
+
+
+
+
+
+
+
+
+
 
 /* }
 .slick-dots, .slick-next, .slick-prev {
