@@ -49,7 +49,7 @@ const getRandomItems = function(cb) {
             cb(err, null);
         } else {
             const randomItems = [];
-            for(let i = 0; i < 21; i ++){
+            for(let i = 0; i < 20; i ++){
                 let x = Math.floor(Math.random() * (100 - i));
                 randomItems.push(items.splice(x, 1)[0]);
             }

@@ -8,22 +8,29 @@ const sizes = {
     oneSize: [],
 };
 
-const Item = (props) => (
-    <div className="item-box">
-        <img src={props.images[0]}></img>
-        <div className="item-info">
-            <div className="item-details">{props.name}</div>
-            <div className="item-price">${props.price} USD</div>
-            <div className="add-to-bag">
-                <div className="text">ADD TO BAG</div>
-                <select>
-                    {sizes[props.sizing].map((size) => {
-                        return <option>{size}</option>
-                    })}
-                </select>
+const Item = (props) => {
+
+    function updateUuid () {
+        props.updateUuid(props.uuid);
+    }
+
+    return (
+        <div className="item-box">
+            <img src={props.images[0]} onClick={updateUuid}></img>
+            <div className="item-info"> 
+                <div className="item-details">{props.name}</div>
+                <div className="item-price">${props.price} USD</div>
+                <div className="add-to-bag">
+                    <div className="text">ADD TO BAG</div>
+                    <select>
+                        {sizes[props.sizing].map((size) => {
+                            return <option>{size}</option>
+                        })}
+                    </select>
+                </div>
             </div>
         </div>
-    </div>
-)
+    )
+}
 
 export default Item;

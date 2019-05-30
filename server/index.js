@@ -1,11 +1,13 @@
 const express = require('express');
 const bodyParcer = require('body-parser');
+const cors = require('cors');
 const PORT = 3005;
 const { getItemByUuid, getItemsByCategory, getRandomItems } = require('../db/index.js');
 
 const app = express();
 
 app.use(bodyParcer.json());
+app.use(cors());
 app.use(express.static('public'));
 
 app.listen(PORT, console.log(`Listening on port... ${PORT}`));
