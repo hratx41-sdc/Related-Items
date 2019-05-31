@@ -1,10 +1,10 @@
 import React from 'react';
 
 const sizes = {
-    mensPants: ['30', '32', '34', '36', '38', '40', '42'],
-    womensPants: ['00', '0', '1', '3', '5', '7', '9', '11', '13', '15', '1X', '2X', '3X'],
-    shirts: ['S', 'M', 'L', 'XL', '2X', '3X'],
-    dresses: ['S', 'M', 'L', 'XL', '2X', '3X'],
+    mensPants: ['Add To Bag', '30', '32', '34', '36', '38', '40', '42'],
+    womensPants: ['Add To Bag', '00', '0', '1', '3', '5', '7', '9', '11', '13', '15', '1X', '2X', '3X'],
+    shirts: ['Add To Bag', 'S', 'M', 'L', 'XL', '2X', '3X'],
+    dresses: ['Add To Bag', 'S', 'M', 'L', 'XL', '2X', '3X'],
     oneSize: [],
 };
 
