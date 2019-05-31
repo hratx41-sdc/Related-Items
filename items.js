@@ -568,7 +568,7 @@
   },
   
   {
-    "uuid": 33,
+    "uuid": 40,
     "name": "I'm Not With Him Skinny Jeans",
     "price": 49.99,
     "url" : "https://www.fashionnova.com/collections/jeans/products/im-not-with-him-skinny-jeans-light-blue-wash",
@@ -725,7 +725,7 @@
   },
   
   {
-    "uuid": 40,
+    "uuid": 33,
     "name": "Take Me Back Skinny Jeans",
     "price": 44.99,
     "url" : "https://www.fashionnova.com/collections/jeans/products/take-me-back-skinny-jeans-black",

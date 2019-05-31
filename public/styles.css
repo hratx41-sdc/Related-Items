@@ -101,14 +101,14 @@ img:hover {
 /* Slider Buttons and Stuff */
 .slick-arrow {
     z-index: 0;
-    top: 170px;
+    top: 190px;
 }
-.slick-prev::before {
+/* .slick-prev::before {
     content: url('/ArrowLeft.png');
 }
 .slick-next::before {
     content: url('/ArrowRight.png');
-}
+} */
 .slick-slide {
     height: 560px;
 }

@@ -12,6 +12,19 @@ const Item = (props) => {
 
     function updateUuid () {
         props.updateUuid(props.uuid);
+        window.location = '#';
+    }
+
+    function addToBag (size) {
+        props.addToBag(props.uuid, size);
+        window.location = '#';
+    }
+
+    function addAccessoryToBag(id) {
+        if (id > 60 && id < 81) {
+            props.addToBag(id, "OS");
+            window.location = '#'
+        }
     }
 
     return (
@@ -22,9 +35,12 @@ const Item = (props) => {
                 <div className="item-price">${props.price} USD</div>
                 <div className="add-to-bag">
                     <div className="text">ADD TO BAG</div>
-                    <select>
+                    <select
+                    id={props.uuid}
+                    onChange={(e) => addToBag(e.target.value)}
+                    onClick={(e) => addAccessoryToBag(e.target.id)}>
                         {sizes[props.sizing].map((size) => {
-                            return <option>{size}</option>
+                            return <option>{size}</option>;
                         })}
                     </select>
                 </div>

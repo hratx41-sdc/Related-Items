@@ -13,11 +13,8 @@ class RelatedItems extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            currentUuid: 13,
-            currentCat: this.currentUuid < 21 ? 'dresses'
-                : this.currentUuid < 41 ? 'pants' 
-                : this.currentUuid < 61 ? 'shirts'
-                : this.currentUuid < 81 ? 'accessories' : 'mens',
+            currentUuid: 59,
+            currentCat: 'shirts',
             relatedItems: [],
             mensItems: [],
             randomItems: [],
@@ -27,6 +24,11 @@ class RelatedItems extends React.Component {
 
     updateUuid(uuid) {
         const event = new CustomEvent('updateUuid', { detail: uuid });
+        window.dispatchEvent(event);
+    }
+
+    addToBag(uuid, size) {
+        const event = new CustomEvent('addToBag', { detail: { uuid, size }});
         window.dispatchEvent(event);
     }
 
@@ -56,6 +58,9 @@ class RelatedItems extends React.Component {
                 : e.detail < 81 ? 'accessories' : 'mens',
             });
         });
+        window.addEventListener('addToBag', (e) => {
+            console.log('Item added to bag:', e.detail.uuid, e.detail.size);
+        })
     }
     
     componentWillMount() {
@@ -81,6 +86,7 @@ class RelatedItems extends React.Component {
                             uuid={item.uuid}
                             sizing={item.sizing}
                             updateUuid={this.updateUuid}
+                            addToBag={this.addToBag}
                         />
             });
             return <Slider items={itemsArray} title={title}/>;
