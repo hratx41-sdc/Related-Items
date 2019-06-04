@@ -33,11 +33,15 @@ const Item = (props) => {
             <div className="item-info"> 
                 <div className="item-details">{props.name}</div>
                 <div className="item-price">${props.price} USD</div>
+                <div className="Selected Size">NONE SELECTED</div>
                 <div className="add-to-bag">
                     <div className="text">ADD TO BAG</div>
                     <select
                     id={props.uuid}
-                    onChange={(e) => addToBag(e.target.value)}
+                    onChange={(e) => {
+                        addToBag(e.target.value)}
+                        
+                    }
                     onClick={(e) => addAccessoryToBag(e.target.id)}>
                         {sizes[props.sizing].map((size) => {
                             return <option>{size}</option>;
