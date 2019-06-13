@@ -11,8 +11,18 @@ const client = new pg.Client({
 client.connect();
 
 
-//Create
-
+//Create 
+const  addItem = (newItem, callback) => {
+    console.log('here is req.body: ', newItem);
+    client.query('INSERT INTO products(uuid, name, price, category, images) values($1, $2, $3, $4, $5)', [newItem.uuid, newItem.name, newItem.price, newItem.category, newItem.images], (err, res) => {
+        if(err) {
+            throw err;
+            callback(err, null);
+        } else {
+            callback(null, res.rows);
+        }
+    })
+  }
 
 
 //Read
@@ -29,12 +39,35 @@ const  getRelatedItemsByUuid = (uuid, callback) => {
 
 
 //Update
+const updateRelatedItemByUuid = (updatedInfo, callback) => {
+    client.query('UPDATE products SET name=($2), price=($3), category=($4), images=($5) WHERE uuid=($1)', [updatedInfo.uuid, updatedInfo.name, updatedInfo.price, updatedInfo.category, updatedInfo.images], (err, res) => {
+        if(err) {
+            throw err;
+            callback(err, null);
+        } else {
+            callback(null, res);
+        }
+    })
+}
 
 
 
 //Delete
+const deleteRelatedItemByUuid = (toDelete, callback) => {
+    client.query('DELETE FROM products WHERE uuid=($1)', [toDelete.uuid], (err, res) => {
+        if(err) {
+            throw err;
+            callback(err, null);
+        } else {
+            callback(null, res);
+        }
+    })
+}
 
 
 module.exports = {
-    getRelatedItemsByUuid
+    getRelatedItemsByUuid,
+    addItem,
+    updateRelatedItemByUuid,
+    deleteRelatedItemByUuid
 }

@@ -10,7 +10,7 @@ I'm using this site to properly setup my server.
 const bodyParcer = require('body-parser');
 const cors = require('cors');
 const PORT = 3005;
-const { getRelatedItemsByUuid } = require('../db/postgres_index.js');
+const { getRelatedItemsByUuid, addItem, updateRelatedItemByUuid, deleteRelatedItemByUuid } = require('../db/postgres_index.js');
 
 const app = express();
 
@@ -47,26 +47,39 @@ app.get('/items/category/:category', (req, res) => {
     });
 });
 
-app.get('/items/random', (req, res) => {
-    console.log('GET request for 20 random items.');
-    getRandomItems((err, items) => {
+app.post('/items', (req, res) => {
+    addItem(req.body, (err, items) => {
         if (err) {
             console.log('Error getting random items:');
-            console.log(err);
             res.status(401).send(err);
         } else {
-            console.log('Success! Got 20 random items.');
+            console.log('Success! Posted item.');
             res.status(201).send(items);
         }
     });
 });
 
-// db.inventory.insertMany([
-//    { item: "journal", qty: 25, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
-//    { item: "notebook", qty: 50, size: { h: 8.5, w: 11, uom: "in" }, status: "A" },
-//    { item: "paper", qty: 100, size: { h: 8.5, w: 11, uom: "in" }, status: "D" },
-//    { item: "planner", qty: 75, size: { h: 22.85, w: 30, uom: "cm" }, status: "D" },
-//    { item: "postcard", qty: 45, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" }
-// ]);
 
+app.put('/items', (req, res) => {
+    updateRelatedItemByUuid(req.body, (err, items) => {
+        if(err) {
+            console.log('Error editing uuid: ', req.body.uuid);
+            res.status(401).send(err);
+        } else {
+            console.log('Success!  You edited uuid: ', req.body.uuid);
+            res.status(201).send(items.body);
+        }
+    })
+})
+
+app.delete('/items', (req, res) => {
+    deleteRelatedItemByUuid(req.body, (err, items) => {
+        if(err) {
+            console.log('Error deleting uuid: ', req.body.uuid);
+            res.status(401).send(err);
+        } else {
+            console.log('Success!  You deleted uuid: ', items.body);
+        }
+    })
+})
 
