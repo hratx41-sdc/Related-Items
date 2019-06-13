@@ -4,10 +4,10 @@ const { itemsArray } = require('../items');
 const uri = require('./asdf.js');
 
 
-mongoose.connect(uri, { useNewUrlParser: true });
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => console.log(`We're connected to MongoDB!`));
+// mongoose.connect(uri, { useNewUrlParser: true });
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', () => console.log(`We're connected to MongoDB!`));
 
 
 //build our item schema w/ methods
@@ -76,8 +76,8 @@ const getRandomItems = function(cb) {
 // }); 
 
 
-module.exports = {
-    getItemByUuid,
-    getItemsByCategory,
-    getRandomItems
-}
+// module.exports = {
+//     getItemByUuid,
+//     getItemsByCategory,
+//     getRandomItems
+// }
